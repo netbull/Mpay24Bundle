@@ -89,5 +89,5 @@ in controller can be used with `$this-get('netbull.provider.mpay24')->getInstanc
 
 Further reading
 ===============
-A short demo implementation guide is available at https://docs.mpay24.com/docs/get-started.
+A short demo implementation guide is available at https://docs.mpay24.com/docs/get-started</br>
 Documentation is available at https://docs.mpay24.com/docs.
