@@ -1,5 +1,5 @@
 {
-  "name" : "netbull/mpay24bundle",
+  "name" : "netbull/mpay24-bundle",
   "description" : "Mpay24 wrapper bundle",
   "type" : "symfony-bundle",
   "authors" : [{
