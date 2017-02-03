@@ -1,9 +1,10 @@
 <?php
 namespace Netbull\Mpay24Bundle\Provider;
 
-use Mpay24\Mpay24;
-
 use Symfony\Component\HttpFoundation\RequestStack;
+
+use Mpay24\Mpay24;
+use Mpay24\Mpay24Config;
 
 /**
  * Class mPay24Provider
@@ -34,7 +35,8 @@ class mPay24Provider
      */
     function __construct( RequestStack $requestStack, $defaultLocale, array $options )
     {
-        $this->instance = new Mpay24($options);
+        $config = new Mpay24Config($options);
+        $this->instance = new Mpay24($config);
 
         $this->request  = $requestStack->getCurrentRequest();
         $this->locale   = ( $this->request ) ? $this->request->getLocale() : $defaultLocale;
