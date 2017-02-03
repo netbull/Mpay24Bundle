@@ -106,7 +106,7 @@ class mPay24Provider
      */
     public function isTokenValid( $name = self::TOKEN_NAME )
     {
-        $testDate = new \DateTime('-20 minutes');
+        $testDate = new \DateTime('-10 minutes');
         $token = $this->session->get($name);
 
         return ( $token && $token['createdAt'] > $testDate );
