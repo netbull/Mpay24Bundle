@@ -26,6 +26,6 @@ class NetbullMpay24Extension extends Extension
 
         $config['log_path'] = $container->getParameter('kernel.logs_dir');
 
-        $container->getDefinition('netbull.provider.mpay24')->replaceArgument(0, $config);
+        $container->getDefinition('netbull.provider.mpay24')->replaceArgument(0, array_values($config));
     }
 }
