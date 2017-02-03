@@ -97,7 +97,7 @@ class mPay24Provider
      */
     public function getToken( $name = self::TOKEN_NAME, array $options = [] )
     {
-        return ( $this->isTokenValid($name) ) ? $this->session->get($name) : $this->createAndStoreToken($name, $options);
+        return ( $this->isTokenValid($name) ) ? $this->session->get($name)['token'] : $this->createAndStoreToken($name, $options);
     }
 
     /**
@@ -109,6 +109,6 @@ class mPay24Provider
         $testDate = new \DateTime('-20 minutes');
         $token = $this->session->get($name);
 
-        return ( $token && $token['createdAt'] < $testDate );
+        return ( $token && $token['createdAt'] > $testDate );
     }
 }
