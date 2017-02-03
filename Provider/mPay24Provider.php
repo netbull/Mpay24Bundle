@@ -2,7 +2,8 @@
 namespace Netbull\Mpay24Bundle\Provider;
 
 use Mpay24\Mpay24;
-use Mpay24\Mpay24Config;
+
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Class mPay24Provider
@@ -16,28 +17,27 @@ class mPay24Provider
     private $instance;
 
     /**
-     * mPay24Provider constructor.
-     * @param int|string    $merchantID
-     * @param string        $soapPassword
-     * @param bool          $test
-     * @param bool          $debug
-     * @param null|string   $proxyHost
-     * @param int|null      $proxyPort
-     * @param null|string   $proxyUser
-     * @param null|string   $proxyPass
-     * @param bool          $verifyPeer
-     * @param bool          $enableCurlLog
-     * @param string        $spid
-     * @param null|string   $flexLinkPassword
-     * @param bool          $flexLinkTestSystem
-     * @param string        $log_file
-     * @param string        $log_path
-     * @param string        $curl_log_file
+     * @var null|\Symfony\Component\HttpFoundation\Request
      */
-    function __construct( $merchantID, $soapPassword, $test, $debug, $proxyHost, $proxyPort, $proxyUser, $proxyPass, $verifyPeer, $enableCurlLog, $spid, $flexLinkPassword, $flexLinkTestSystem, $log_file, $log_path, $curl_log_file )
+    private $request;
+
+    /**
+     * @var string
+     */
+    private $locale;
+
+    /**
+     * mPay24Provider constructor.
+     * @param RequestStack  $requestStack
+     * @param               $defaultLocale
+     * @param array         $options
+     */
+    function __construct( RequestStack $requestStack, $defaultLocale, array $options )
     {
-        $config = new Mpay24Config($merchantID, $soapPassword, $test, $debug, $proxyHost, $proxyPort, $proxyUser, $proxyPass, $verifyPeer, $enableCurlLog, $spid, $flexLinkPassword, $flexLinkTestSystem, $log_file, $log_path, $curl_log_file);
-        $this->instance = new Mpay24($config);
+        $this->instance = new Mpay24($options);
+
+        $this->request  = $requestStack->getCurrentRequest();
+        $this->locale   = ( $this->request ) ? $this->request->getLocale() : $defaultLocale;
     }
 
     /**
@@ -46,5 +46,19 @@ class mPay24Provider
     public function getInstance()
     {
         return $this->instance;
+    }
+
+    /**
+     * @param array $options
+     * @return \Mpay24\Responses\CreatePaymentTokenResponse
+     */
+    public function createToken( array $options = [] )
+    {
+        $defaultOptions = [ 'language' => strtoupper($this->locale) ];
+        $options = array_merge($defaultOptions, $options);
+
+        $tokenData = $this->instance->token('CC', $options);
+
+        return $tokenData;
     }
 }
