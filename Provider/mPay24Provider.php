@@ -62,16 +62,18 @@ class mPay24Provider
 
     /**
      * @param array $options
-     * @return \Mpay24\Responses\CreatePaymentTokenResponse
+     * @return array
      */
     public function createToken( array $options = [] )
     {
         $defaultOptions = [ 'language' => strtoupper($this->locale) ];
         $options = array_merge($defaultOptions, $options);
 
-        $tokenData = $this->instance->token('CC', $options);
+        $tokenData = [
+            'token'     => $this->instance->token('CC', $options),
+            'createdAt' => new \DateTime('now')
+        ];
 
-        $tokenData['createdAt'] = new \DateTime('now');
         return $tokenData;
     }
 
@@ -85,7 +87,7 @@ class mPay24Provider
         $tokenData = $this->createToken($options);
         $this->session->set($name, $tokenData);
 
-        return $tokenData;
+        return $tokenData['token'];
     }
 
     /**
@@ -105,6 +107,8 @@ class mPay24Provider
     public function isTokenValid( $name = self::TOKEN_NAME )
     {
         $testDate = new \DateTime('-20 minutes');
-        return ( $this->session->get($name) && $this->session->get($name)['createdAt'] < $testDate );
+        $token = $this->session->get($name);
+
+        return ( $token && $token['createdAt'] < $testDate );
     }
 }
