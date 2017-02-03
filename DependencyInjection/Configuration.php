@@ -52,6 +52,7 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('flex_link_password')->defaultValue('**********')->end()
                 ->scalarNode('flex_link_test_system')->defaultTrue()->end()
                 ->scalarNode('log_file')->defaultValue('netbull_mpay24.log')->end()
+                ->scalarNode('log_path')->defaultNull()->end()
                 ->scalarNode('curl_log_file')->defaultValue('netbull_mpay24_curl.log')->end()
             ->end()
         ;

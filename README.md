@@ -85,7 +85,20 @@ Usage
 
 the registered service is `netbull.provider.mpay24`
 
+Using directly the SDK Api
+--------------------------
+
 in controller can be used with `$this-get('netbull.provider.mpay24')->getInstance()`
+
+Creating token for credit card payment
+--------------------------------------
+
+```php
+$paymentProvider = $this-get('netbull.provider.mpay24');
+$tokenData = $paymentProvider->createToken()
+```
+
+The payment provider automatically tries to detect the current Locale from the request object if the language is not specified in the options
 
 Further reading
 ===============
