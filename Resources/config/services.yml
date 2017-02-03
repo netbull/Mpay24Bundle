@@ -1,4 +1,4 @@
 services:
-#    net_bull_mpay24.example:
-#        class: NetBull\Mpay24Bundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    netbull.provider.mpay24:
+        class: Netbull\Mpay24Bundle\Provider\mPay24Provider
+        arguments: [ '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']

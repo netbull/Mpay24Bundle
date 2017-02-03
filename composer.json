@@ -13,10 +13,17 @@
     "MIT"
   ],
   "require" : {
+    "mpay24/mpay24-php": "dev-psr4"
   },
   "autoload" : {
     "psr-4" : {
-      "Netbull\\Mpay24Bundle" : ""
+      "Netbull\\Mpay24Bundle\\" : ""
     }
-  }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/mpay24/mpay24-php.git"
+    }
+  ]
 }

@@ -1,9 +1,8 @@
 <?php
-
-namespace NetBull\Mpay24Bundle;
+namespace Netbull\Mpay24Bundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class NetBullMpay24Bundle extends Bundle
+class NetbullMpay24Bundle extends Bundle
 {
 }
