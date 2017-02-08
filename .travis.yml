@@ -16,6 +16,6 @@ env:
 before_script:
   - echo 'date.timezone = "Europe/Sofia"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - composer require symfony/http-foundation:${SYMFONY_VERSION}
-  - php composer.phar install
+  - composer install
 
 script: phpunit --coverage-text
