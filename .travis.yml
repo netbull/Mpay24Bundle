@@ -18,4 +18,3 @@ before_script:
   - wget http://getcomposer.org/composer.phar
   - composer require symfony/http-foundation:${SYMFONY_VERSION}
   - php composer.phar install
-#  - phpunit
