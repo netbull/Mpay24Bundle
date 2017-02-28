@@ -1,4 +1,4 @@
 services:
     netbull.provider.mpay24:
-        class: Netbull\Mpay24Bundle\Provider\mPay24Provider
+        class: Netbull\Mpay24Bundle\Provider\MPay24Provider
         arguments: [ [], '@request_stack', '%kernel.default_locale%', '@session' ]
