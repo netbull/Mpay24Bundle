@@ -9,10 +9,10 @@ use Mpay24\Mpay24;
 use Mpay24\Mpay24Config;
 
 /**
- * Class mPay24Provider
+ * Class MPay24Provider
  * @package Netbull\Mpay24Bundle\Provider
  */
-class mPay24Provider
+class MPay24Provider
 {
     const TOKEN_NAME = '_token';
 
@@ -43,7 +43,7 @@ class mPay24Provider
      * @param string        $defaultLocale
      * @param Session       $session
      */
-    function __construct( array $options, RequestStack $requestStack, $defaultLocale, Session $session )
+    public function __construct( array $options, RequestStack $requestStack, $defaultLocale, Session $session )
     {
         $config = new Mpay24Config($options);
         $this->instance = new Mpay24($config);
