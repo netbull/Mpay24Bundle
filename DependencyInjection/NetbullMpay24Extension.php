@@ -1,4 +1,5 @@
 <?php
+
 namespace Netbull\Mpay24Bundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;

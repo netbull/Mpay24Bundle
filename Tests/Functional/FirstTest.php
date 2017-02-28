@@ -1,4 +1,5 @@
 <?php
+
 namespace Netbull\Mpay24Bundle\Tests\Functional;
 
 /**

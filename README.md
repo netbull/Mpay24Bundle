@@ -1,6 +1,6 @@
 Mpay24Bundle
 ============
-[![Build Status](https://travis-ci.org/netbull/Mpay24Bundle.svg?branch=master)](https://travis-ci.org/netbull/Mpay24Bundle)<br>
+A
 This is Symfony bundle which works with [mpay24.com](https://www.mpay24.com/web/) payments.
 
 Dependencies
